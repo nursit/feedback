@@ -1,0 +1,38 @@
+<div class="ajax formulaire_spip formulaire_configurer formulaire_#FORM formulaire_#FORM-#ENV{id,nouveau}">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	[(#ENV{editable})
+	<form method='post' action='#ENV{action}'><div>
+		[(#REM) declarer les hidden qui declencheront le service du formulaire
+		parametre : url d'action ]
+		#ACTION_FORMULAIRE{#ENV{action}}
+		#SET{fl,feedback}
+		<ul>
+			#SET{name,nom}#SET{obli,'obligatoire'}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+			<li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+				<label for="#GET{name}">[(#GET{fl}|concat{':label_',#GET{name}}|_T)]</label>[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				][<input type="text" class="text" name="#GET{name}" value="#ENV*{#GET{name}}" id="#GET{name}"/>
+				(#ENV{_nom}|non)][<input type="text" class="text readonly" name="#GET{name}" value="#ENV*{_nom}" readonly='readonly' id="#GET{name}"/>(#ENV{_nom}|oui)]
+			</li>
+			#SET{name,email}#SET{obli,'obligatoire'}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+			<li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+				<label for="#GET{name}">[(#GET{fl}|concat{':label_',#GET{name}}|_T)]</label>[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				][<input type="text" class="text" name="#GET{name}" value="#ENV*{#GET{name}}" id="#GET{name}"/>
+				(#ENV{_email}|non)][<input type="text" class="text readonly" name="#GET{name}" value="#ENV*{_email}" readonly='readonly' id="#GET{name}"/>(#ENV{_email}|oui)]
+			</li>
+			#SET{name,message}#SET{obli,''}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+			<li class="editer_[(#GET{name})] pleine_largeur[ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+				<label for="#GET{name}">[(#GET{fl}|concat{':label_',#GET{name}}|_T)]</label>[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				]<textarea class="textarea" name="#GET{name}" rows="8">
+#ENV*{#GET{name}}</textarea>
+		</ul>
+
+	  <!--extra-->
+	  <p class='boutons'><span class='image_loading'>&nbsp;</span>
+			<input type='submit' class='submit' value='<:feedback:bouton_envoyer:>' /></p>
+	</div></form>
+	]
+</div>
