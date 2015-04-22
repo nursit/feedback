@@ -32,13 +32,13 @@ Utilisation :
 <pre>
 
 Envoyer un feedback a support@example.org
-<formulaire|feedback|dest=support@example.org>
+&lt;formulaire|feedback|dest=support@example.org>
 
 Envoyer un feedback a l'auteur 1
-<formulaire|feedback|dest=1>
+&lt;formulaire|feedback|dest=1>
 
 Envoyer un feedback a l'auteur 1 et a support@example.org
-<formulaire|feedback|dest=1,support@example.org>
+&lt;formulaire|feedback|dest=1,support@example.org>
 </pre>
 
 
