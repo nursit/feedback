@@ -140,13 +140,14 @@ function formulaires_feedback_traiter_dist($destinataires=null){
 		}
 	}
 
-	include_spip('inc/notifications');
-	$from = "$nom <$email>";
-	$sujet = "[".$GLOBALS['meta']['nom_site']."] Feedback";
-	$texte = "$nom <$email>\n $message \n\n"._T('feedback:message_envoye_depuis',array('url'=>url_absolue(self('&'))));
-	$user_infos = feedback_collecter_user_infos();
 
-	notifications_envoyer_mails($dest_emails,$texte."\n\n$user_infos",$sujet,$from);
+	include_spip('inc/notifications');
+ 	$from = $GLOBALS['meta']['email_webmaster'];
+	$sujet = "[".$GLOBALS['meta']['nom_site']."] Feedback";
+ 	$texte = "Nom : $nom\nEmail : $email\n$message";
+	$user_infos = feedback_collecter_user_infos();
+	$head = "From: $from \r\nReply-To: $email \r\n ";   .
+	notifications_envoyer_mails($dest_emails,$texte."\n\n$user_infos",$sujet,$from,$head) ;
 
 	$ok = _T('feedback:message_bien_envoye');
 
