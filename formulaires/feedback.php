@@ -146,7 +146,7 @@ function formulaires_feedback_traiter_dist($destinataires=null){
 	$sujet = "[".$GLOBALS['meta']['nom_site']."] Feedback";
  	$texte = "Nom : $nom\nEmail : $email\n$message";
 	$user_infos = feedback_collecter_user_infos();
-	$head = "From: $from \r\nReply-To: $email \r\n ";   .
+	$head = "From: $from \r\nReply-To: $email \r\n ";   
 	notifications_envoyer_mails($dest_emails,$texte."\n\n$user_infos",$sujet,$from,$head) ;
 
 	$ok = _T('feedback:message_bien_envoye');
