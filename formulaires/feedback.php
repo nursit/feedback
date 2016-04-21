@@ -142,20 +142,20 @@ function formulaires_feedback_traiter_dist($destinataires=null){
 
 
 	include_spip('inc/notifications');
- 	$from = $GLOBALS['meta']['email_webmaster'];
 	$sujet = "[".$GLOBALS['meta']['nom_site']."] Feedback";
  	$texte = "Nom : $nom\nEmail : $email\n$message";
 	$user_infos = feedback_collecter_user_infos();
-	$head = "From: $from \r\nReply-To: $email \r\n ";   
-	notifications_envoyer_mails($dest_emails,$texte."\n\n$user_infos",$sujet,$from,$head) ;
+	// on laisse le from par defaut, car sinon ne passe pas dans les services de mail
+	// mais on mets un Reply-To vers l'email du visiteur qui soumet le formulaire
+	$head = "Reply-To: $email\r\n";
+	notifications_envoyer_mails($dest_emails,$texte."\n\n$user_infos",$sujet,'',$head);
 
 	$ok = _T('feedback:message_bien_envoye');
 
 	// envoyer une copie a l'emetteur, seulement si il est identifie
 	if ($id_auteur){
-		$from = $GLOBALS['meta']['email_webmaster'];
 		$texte = _T('feedback:texte_message_duplicata')."\n\n".$texte;
-		notifications_envoyer_mails($email,$texte,$sujet,$from);
+		notifications_envoyer_mails($email,$texte,$sujet);
 		$ok .= "<br />"._T('feedback:message_copie_envoyee',array('email'=>$email));
 	}
 
