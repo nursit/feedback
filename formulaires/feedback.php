@@ -147,7 +147,7 @@ function formulaires_feedback_traiter_dist($destinataires=null){
 	$user_infos = feedback_collecter_user_infos();
 	// on laisse le from par defaut, car sinon ne passe pas dans les services de mail
 	// mais on mets un Reply-To vers l'email du visiteur qui soumet le formulaire
-	$head = "Reply-To: $email\r\n";
+	$head = "Reply-To: $email\n";
 	notifications_envoyer_mails($dest_emails,$texte."\n\n$user_infos",$sujet,'',$head);
 
 	$ok = _T('feedback:message_bien_envoye');
