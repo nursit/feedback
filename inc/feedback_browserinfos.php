@@ -25,16 +25,18 @@ function feedback_js_browserdetect($selecteur_dom) {
 	f|=w.Worker?4:0;f|=w.applicationCache?8:0;f|=w.history && history.pushState?16:0;f|=d.documentElement.webkitRequestFullScreen?32:0;f|='FileReader' in w?64:0;
 	p.push('f='+f);p.push('r='+Math.random().toString(36).substring(7));p.push('w='+screen.width);p.push('h='+screen.height);var s=d.createElement('script');
 	s.src='{$dir}detect.js?' + p.join('&');d.getElementsByTagName('head')[0].appendChild(s);})();
-	function detectBrowserInit(){
-		if (typeof WhichBrowser=="undefined") {setTimeout(detectBrowserInit,250);return}
-		var result = new WhichBrowser();
-		result = JSON.stringify(result);
-		result = JSON.parse(result);
-		result.device.screenWidth = screen.width;
-		result.device.screenHeight = screen.height;
-		jQuery('{$selecteur_dom}').attr('value',JSON.stringify(result));
-	}
-	jQuery(detectBrowserInit);
+	jQuery(function(){
+		function detectBrowserInit(){
+			if (typeof WhichBrowser=="undefined") {setTimeout(detectBrowserInit,250);return}
+			var result = new WhichBrowser();
+			result = JSON.stringify(result);
+			result = JSON.parse(result);
+			result.device.screenWidth = screen.width;
+			result.device.screenHeight = screen.height;
+			jQuery('{$selecteur_dom}').attr('value',JSON.stringify(result));
+		}
+		detectBrowserInit();
+	});
 </script>
 snipet;
 
