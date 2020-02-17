@@ -4,9 +4,13 @@
 	version="2.0.0"
 	etat="dev"
 	compatibilite="[3.2.0;3.3.*]"
-	logo="prive/themes/spip/images/feedback-32.png"
+	logo="prive/themes/spip/images/feedback-64.png"
 >
 
 	<nom>Feedback Utilisateurs</nom>
 	<!-- Feedbacks utilisateurs -->
+
+	<pipeline nom="saisies_autonomes" inclure="feedback_fonctions.php" />
+	<pipeline nom="saisies_verifier" inclure="feedback_fonctions.php" />
+
 </paquet>

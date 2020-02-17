@@ -22,6 +22,9 @@ Envoyé depuis @url@",
 	'texte_message_duplicata' => '(Ceci est une copie du message que vous nous avez envoyé)
 ---',
 
+	'saisie_browserinfos_titre' => 'Informations navigateur',
+	'saisie_browserinfos_explication' => 'Collecte des informations navigateur',
+
 );
 
 ?>
