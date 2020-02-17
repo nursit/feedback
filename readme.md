@@ -2,7 +2,7 @@
 
 ## Formulaire de Feedback pour SPIP
 
-Le formulaire permet aux visiteurs de signaler un problème.
+Le formulaire permet aux visiteurs de signaler un problÃ¨me.
 Il collecte en plus les informations techniques concernant le visiteur ($_SERVER et informations sur le navigateur et l'OS via javascript)
 
 Utilisation :
@@ -42,5 +42,9 @@ Envoyer un feedback a l'auteur 1 et a support@example.org
 </pre>
 
 
-Lorsque le visiteur est identifié par SPIP, on lui envoie aussi une copie de son message (mais sans les informations techniques)
+Lorsque le visiteur est identifiÃ© par SPIP, on lui envoie aussi une copie de son message (mais sans les informations techniques)
 (et uniquement dans ce cas pour eviter une utilisation abusive du formulaire)
+
+### Dans un formidable
+
+Utiliser le type de champ "Browserinfos" pour collecter les informations utilisateur dans un formulaire de contact

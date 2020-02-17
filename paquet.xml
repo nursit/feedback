@@ -2,7 +2,7 @@
 	prefix="feedback"
 	categorie="outil"
 	version="2.0.0"
-	etat="dev"
+	etat="test"
 	compatibilite="[3.2.0;3.3.*]"
 	logo="prive/themes/spip/images/feedback-64.png"
 >
