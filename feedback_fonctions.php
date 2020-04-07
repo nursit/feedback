@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Plugin feedback
@@ -8,7 +7,7 @@
  *
  */
 
-// Sécurité
+// Securite
 if (!defined('_ECRIRE_INC_VERSION')) {
 	return;
 }
@@ -29,7 +28,7 @@ function filtre_browserinfos_print_dist($infos) {
 }
 
 /**
- * Quelles sont les saisies qui se débrouillent toutes seules, sans le _base commun.
+ * Quelles sont les saisies qui se debrouillent toutes seules, sans le _base commun.
  *
  * @return array Retourne un tableau contenant les types de saisies qui ne doivent pas utiliser le _base.html commun
  */
