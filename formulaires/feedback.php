@@ -7,13 +7,8 @@
  *
  */
 
-// Sécurité
+// SÃ©curitÃ©
 if (!defined('_ECRIRE_INC_VERSION')) {
-	return;
-}
-
-
-if (!defined('_ECRIRE_INC_VERSION')){
 	return;
 }
 
@@ -32,10 +27,11 @@ function formulaires_feedback_charger_dist($destinataires = null){
 		'nom' => '',
 		'email' => '',
 		'message' => '',
+		'_nospam_encrypt' => true,
 	);
 
-	if ($GLOBALS['visiteur_session']['id_auteur']
-		AND $auteur = sql_fetsel('*', 'spip_auteurs', 'id_auteur=' . intval($GLOBALS['visiteur_session']['id_auteur']))){
+	if (!empty($GLOBALS['visiteur_session']['id_auteur'])
+		and $auteur = sql_fetsel('*', 'spip_auteurs', 'id_auteur=' . intval($GLOBALS['visiteur_session']['id_auteur']))){
 
 		$valeurs['_nom'] = $auteur['nom'];
 		$valeurs['_email'] = $auteur['email'];
@@ -62,8 +58,8 @@ function formulaires_feedback_verifier_dist($destinataires = null){
 
 
 	$oblis = array('message');
-	if (!$GLOBALS['visiteur_session']['id_auteur']
-		OR !$auteur = sql_fetsel('*', 'spip_auteurs', 'id_auteur=' . intval($GLOBALS['visiteur_session']['id_auteur']))){
+	if (empty($GLOBALS['visiteur_session']['id_auteur'])
+		or !$auteur = sql_fetsel('*', 'spip_auteurs', 'id_auteur=' . intval($GLOBALS['visiteur_session']['id_auteur']))){
 		$oblis[] = 'nom';
 		$oblis[] = 'email';
 	}
@@ -100,8 +96,8 @@ function formulaires_feedback_verifier_dist($destinataires = null){
  */
 function formulaires_feedback_traiter_dist($destinataires = null){
 	$message = _request('message');
-	if ($GLOBALS['visiteur_session']['id_auteur']
-		AND $auteur = sql_fetsel('*', 'spip_auteurs', 'id_auteur=' . intval($GLOBALS['visiteur_session']['id_auteur']))){
+	if (!empty($GLOBALS['visiteur_session']['id_auteur'])
+		and $auteur = sql_fetsel('*', 'spip_auteurs', 'id_auteur=' . intval($GLOBALS['visiteur_session']['id_auteur']))){
 		$email = $auteur['email'];
 		$nom = $auteur['nom'];
 		$id_auteur = $auteur['id_auteur'];
